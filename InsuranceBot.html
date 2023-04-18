@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Damco Bot Integration Demo</title> 
+        <style>
+
+        .main {
+        margin: 18px;
+        border-radius: 4px;
+        }
+        
+        div[role="form"] {
+        background: rgba(255,255,255,0.6);
+        } 
+        div[role="status"] {
+        border-bottom: 1px solid rgb(230, 230, 230);
+        } 
+        div[role="status"] button {
+        border-color: rgb(0, 0,0,0.4) !important;
+        color: rgb(0, 0, 0) !important;
+        } 
+        
+        #webchat {
+        position: fixed;
+        height: calc(100% - 200px);
+        z-index: 9999;
+        width: 400px;
+        top: 130px;
+        right: 30px;
+        overflow: hidden;
+        border: 1px solid rgb(230, 230, 230);
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        border-radius: 0px 0px 10px 10px;
+        }
+
+        
+
+        /* -------------------------------- 
+        Bot button style
+        -------------------------------- */
+        .open-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            opacity: 0.9;
+            position: fixed;
+            right: 20px;
+            z-index: 9999;
+            bottom: 10px;
+            /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
+            
+        }
+
+        /* Style the action buttons vertically */
+        .react-film__filmstrip__list {
+        display: block !important;
+        word-wrap: break-word !important;
+        max-height: 100px;
+        overflow-y: scroll;
+        }
+        .react-film__filmstrip__item {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width:30%;
+        display: grid;
+        }
+
+        button.webchat__suggested-action webchat--css-kukzf-12ui717 webchat--css-kukzf-b9dqpr webchat__suggested-actions__button
+        {
+            border-color: red !important;
+            color: red !important
+        }
+
+        .webchat__bubble__content {
+            border-radius: 8px;
+        }
+
+        .SVGicon{
+            box-shadow: 0 0 3px 3px rgb(0 0 0 / 0.2);border-radius: 50%;
+        }
+
+
+        #Header{
+        width: 300px;
+        height:35px;
+        background:grey;
+        position: fixed;
+        height: 35px;
+        z-index: 9999;
+        width: 400px;
+        top: 96px;
+        right: 30px;
+        overflow: hidden;
+        border: 0px solid rgb(230, 230, 230);
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        border-radius: 10px 10px 0px 0px;
+        
+    
+        }
+
+        #HeaderTitle{
+            bottom: 300px;
+            text-align: center;
+            color: white;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-weight: 550;
+            margin:0;
+            padding:10px;
+            vertical-align: middle;            
+        }
+   </style>
+</head>
+
+<body>
+    <div class="heading">
+       <h1>ChatBot Demo</h1>
+       <h4>Click on the chat bot icon on bottom right of the page</h4>
+    </div>
+    <br>
+
+    <!-- Chat Bot Button -->
+    <button onclick="callPVA()"  role="openchatbutton" class="open-button" title="Open Chat Bot" id="toggle1">
+        <svg class="SVGicon" width="40" height="40"    viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false"><circle cx="15" cy="15" r="15" fill="hsla(215, 98%, 16%)"></circle>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M22 13.5789H20.8462V11.83C20.8462 11.587 20.8011 11.3593 20.7109 11.1468C20.6208 10.9342 20.4976 10.749 20.3413 10.5911C20.1851 10.4332 20.0018 10.3087 19.7915 10.2176C19.5811 10.1265 19.3558 10.081 19.1154 10.081H15.0769V8.17713C15.2512 8.07389 15.3894 7.93117 15.4916 7.74899C15.5998 7.5668 15.6538 7.37247 15.6538 7.16599C15.6538 7.00202 15.6238 6.8502 15.5637 6.71053C15.5036 6.57085 15.4195 6.44939 15.3113 6.34615C15.2091 6.23684 15.0889 6.15182 14.9507 6.09109C14.8125 6.03036 14.6623 6 14.5 6C14.3377 6 14.1875 6.03036 14.0493 6.09109C13.9111 6.15182 13.7879 6.23684 13.6797 6.34615C13.5775 6.44939 13.4964 6.57085 13.4363 6.71053C13.3762 6.8502 13.3462 7.00202 13.3462 7.16599C13.3462 7.37247 13.3972 7.5668 13.4994 7.74899C13.6076 7.93117 13.7488 8.07389 13.9231 8.17713V10.081H9.88462C9.64423 10.081 9.41887 10.1265 9.20853 10.2176C8.9982 10.3087 8.8149 10.4332 8.65865 10.5911C8.5024 10.749 8.37921 10.9342 8.28906 11.1468C8.19892 11.3593 8.15385 11.587 8.15385 11.83V13.5789H7V15.9109H8.15385V18.8259C8.15385 19.0688 8.19892 19.2966 8.28906 19.5091C8.37921 19.7217 8.5024 19.9069 8.65865 20.0648C8.8149 20.2227 8.9982 20.3472 9.20853 20.4383C9.41887 20.5294 9.64423 20.5749 9.88462 20.5749H12.7692V24L16.7356 20.5749H19.1154C19.3558 20.5749 19.5811 20.5294 19.7915 20.4383C20.0018 20.3472 20.1851 20.2227 20.3413 20.0648C20.4976 19.9069 20.6208 19.7217 20.7109 19.5091C20.8011 19.2966 20.8462 19.0688 20.8462 18.8259V15.9109H22V13.5789ZM16.2308 14.7449H17.3846V13.5789H16.2308V14.7449ZM12.7692 14.7449H11.6154V13.5789H12.7692V14.7449ZM13.1569 16.8128C12.7302 16.6306 12.3516 16.3725 12.021 16.0385L11.2097 16.8674C11.6484 17.3107 12.1502 17.6508 12.7151 17.8877C13.2861 18.1245 13.881 18.2429 14.5 18.2429C15.119 18.2429 15.7109 18.1245 16.2758 17.8877C16.8468 17.6508 17.3516 17.3107 17.7903 16.8674L16.979 16.0385C16.6484 16.3725 16.2698 16.6306 15.8431 16.8128C15.4165 16.9889 14.9688 17.0769 14.5 17.0769C14.0313 17.0769 13.5835 16.9889 13.1569 16.8128Z" fill="white"></path>
+        </svg>
+        <!-- <img style="height: 30px; width: 30px; box-shadow: 0 0 3px 3px rgb(0 0 0 / 0.2) ;border-radius: 50%;" src="UAIC _ United Auto _ United Automobile Insurance Company _ Car Insurance _ High Quality and Low Cost Insurance_files/18943817-modified.png"> -->
+    </button>        
+    
+
+    
+
+    <!-- Chat Bot Placeholder -->    
+    <div id="parentDiv" style="display: none;"> 
+    <div id="Header">
+        <h3 id="HeaderTitle">Chatbot</h3>
+        
+    </div> 
+    <div id="webchat" role="main"></div>
+    </div> 
+
+    <!-- Bot Visibility -->
+    <button id="toggle">
+        <svg class="SVGicon" width="40" height="40"    viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false"><circle cx="15" cy="15" r="15" fill="hsla(215, 98%, 16%)"></circle>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M22 13.5789H20.8462V11.83C20.8462 11.587 20.8011 11.3593 20.7109 11.1468C20.6208 10.9342 20.4976 10.749 20.3413 10.5911C20.1851 10.4332 20.0018 10.3087 19.7915 10.2176C19.5811 10.1265 19.3558 10.081 19.1154 10.081H15.0769V8.17713C15.2512 8.07389 15.3894 7.93117 15.4916 7.74899C15.5998 7.5668 15.6538 7.37247 15.6538 7.16599C15.6538 7.00202 15.6238 6.8502 15.5637 6.71053C15.5036 6.57085 15.4195 6.44939 15.3113 6.34615C15.2091 6.23684 15.0889 6.15182 14.9507 6.09109C14.8125 6.03036 14.6623 6 14.5 6C14.3377 6 14.1875 6.03036 14.0493 6.09109C13.9111 6.15182 13.7879 6.23684 13.6797 6.34615C13.5775 6.44939 13.4964 6.57085 13.4363 6.71053C13.3762 6.8502 13.3462 7.00202 13.3462 7.16599C13.3462 7.37247 13.3972 7.5668 13.4994 7.74899C13.6076 7.93117 13.7488 8.07389 13.9231 8.17713V10.081H9.88462C9.64423 10.081 9.41887 10.1265 9.20853 10.2176C8.9982 10.3087 8.8149 10.4332 8.65865 10.5911C8.5024 10.749 8.37921 10.9342 8.28906 11.1468C8.19892 11.3593 8.15385 11.587 8.15385 11.83V13.5789H7V15.9109H8.15385V18.8259C8.15385 19.0688 8.19892 19.2966 8.28906 19.5091C8.37921 19.7217 8.5024 19.9069 8.65865 20.0648C8.8149 20.2227 8.9982 20.3472 9.20853 20.4383C9.41887 20.5294 9.64423 20.5749 9.88462 20.5749H12.7692V24L16.7356 20.5749H19.1154C19.3558 20.5749 19.5811 20.5294 19.7915 20.4383C20.0018 20.3472 20.1851 20.2227 20.3413 20.0648C20.4976 19.9069 20.6208 19.7217 20.7109 19.5091C20.8011 19.2966 20.8462 19.0688 20.8462 18.8259V15.9109H22V13.5789ZM16.2308 14.7449H17.3846V13.5789H16.2308V14.7449ZM12.7692 14.7449H11.6154V13.5789H12.7692V14.7449ZM13.1569 16.8128C12.7302 16.6306 12.3516 16.3725 12.021 16.0385L11.2097 16.8674C11.6484 17.3107 12.1502 17.6508 12.7151 17.8877C13.2861 18.1245 13.881 18.2429 14.5 18.2429C15.119 18.2429 15.7109 18.1245 16.2758 17.8877C16.8468 17.6508 17.3516 17.3107 17.7903 16.8674L16.979 16.0385C16.6484 16.3725 16.2698 16.6306 15.8431 16.8128C15.4165 16.9889 14.9688 17.0769 14.5 17.0769C14.0313 17.0769 13.5835 16.9889 13.1569 16.8128Z" fill="white"></path>
+        </svg>        
+    </button>
+    
+    <script>
+        const targetDiv = document.getElementById("parentDiv");
+        const btn = document.getElementById("toggle");        
+        btn.onclick = function () {
+          if (targetDiv.style.display !== "none") {
+            targetDiv.style.display = "none";
+          } else {
+            targetDiv.style.display = "block";
+          }
+        };
+      </script>
+
+
+
+    
+
+     <!-- Include Cdn link for chatbot js file -->
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+
+    <script>
+      // Function to call chatbot on button click  
+    //   const targetDiv1 = document.getElementById("open-button");
+    //         const btn1 = document.getElementById("toggle1");        
+    //         btn1.onclick = function () {
+    //             btn1.style.display = 'none';
+    //         };
+            const targetDiv1 = document.getElementById("open-button");
+            const btn1 = document.getElementById("toggle1");    
+
+
+          function callPVA(){
+        if (document.getElementById('parentDiv').style.display == 'block') {
+            document.getElementById('parentDiv').style.display = 'none'
+        }
+        else
+        document.getElementById('parentDiv').style.display = 'block'; btn1.style.display = 'none';
+
+        
+            const styleOptions = {
+               // Add styleOptions to customize web chat canvas
+               hideUploadButton: true,
+               userAvatarInitials: 'You',
+               backgroundColor: '#b9ccd2', //'rgba(135, 133, 132,0.85)',
+               botAvatarInitials: 'BT',
+               accent: '#00809d',
+               botAvatarBackgroundColor: "#FFFFFF",
+               botAvatarImage: 'UAIC _ United Auto _ United Automobile Insurance Company _ Car Insurance _ High Quality and Low Cost Insurance_files/18943817-modified.png',
+               suggestedActionBorderColor: "#4c7a94",
+               suggestedActionBackground:"rgba(255,255,225,.5)"
+               //userAvatarImage: 'https://avatars.githubusercontent.com/u/661465'
+            };
+
+            // Get the chat bot id (Replace the ‘Bot ID’ with your bot’s Id that you can obtain from the Power Virtual Agent portal. Navigate to Channels. Select a channel like “Skype”. Copy the Bot ID that was displayed.)
+            var BOT_ID =  "48b5afab-e15c-49b3-a503-4f8f61e7513e";
+
+            //#region ChatBot code starts -- Do not modify this
+            var theURL = "https://powerva.microsoft.com/api/botmanagement/v1/directline/directlinetoken?botId=" + BOT_ID;
+
+            const store = window.WebChat.createStore(
+               {},
+               ({ dispatch }) => next => action => {
+                   if (action.type === "DIRECT_LINE/CONNECT_FULFILLED") {
+                      dispatch({
+                          meta: {
+                               method: "keyboard",
+                           },
+                           payload: {
+                               activity: {
+                                     channelData: {
+                                          postBack: true,
+                                     },
+                                      //Web Chat will show the 'Greeting' System Topic message which has a trigger-phrase 'hello'
+                                      name: 'startConversation',
+                                      type: "event"
+                                 },
+                            },
+                            type: "DIRECT_LINE/POST_ACTIVITY",
+                       });
+                 }
+                 return next(action);
+              }
+           );
+           fetch(theURL)
+                .then(response => response.json())
+                .then(conversationInfo => {
+                    window.WebChat.renderWebChat(
+                        {
+                            directLine: window.WebChat.createDirectLine({
+                                token: conversationInfo.token,
+                            }),
+                            store: store,
+                            styleOptions: styleOptions
+                        },
+                        document.getElementById('webchat')
+                    );
+                })
+                .catch(err => console.error("An error occurred: " + err));
+                }
+
+            //#region ChatBot code ends
+        </script>
+        
+            
+          
+      </body>
+    </html>
